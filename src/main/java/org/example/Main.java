@@ -21,7 +21,8 @@ public class Main {
             }
         }*/
         UserController controller= new UserController();
-        controller.insertData(2,"David","pass");
+        //controller.insertData(2,"David","pass");
+        controller.readData();
     }
 }
 

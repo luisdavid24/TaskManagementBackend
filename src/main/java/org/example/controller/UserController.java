@@ -1,9 +1,6 @@
 package org.example.controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserController {
     public Connection getConnection() throws SQLException {
@@ -29,7 +26,7 @@ public class UserController {
             e.printStackTrace();
         }
     }
-    /*
+
     // Método para leer datos de la base de datos
     public void readData() {
         String query = "SELECT * FROM users";
@@ -39,13 +36,13 @@ public class UserController {
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
-                System.out.println("Nombre: " + rs.getString("nombre") + ", Apellido: " + rs.getString("apellido"));
+                System.out.println("Id: " + rs.getInt("id") + ", User name: " + rs.getString("name")+" Password: "+rs.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+    /*
     // Método para actualizar datos en la base de datos
     public void updateData(String nombreNuevo, String apellidoNuevo, int id) {
         String query = "UPDATE tabla_ejemplo SET nombre = ?, apellido = ? WHERE id = ?";
