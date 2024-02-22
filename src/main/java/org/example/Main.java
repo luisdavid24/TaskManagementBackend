@@ -1,11 +1,13 @@
 package org.example;
 
+import org.example.controller.UserController;
+
 import javax.xml.transform.Result;
 import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        String user="postgres";
+        /*String user="postgres";
         String password="12345";
         Connection conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/TaskManagement",user,password);
         try (Statement stmt = conn.createStatement();
@@ -17,7 +19,9 @@ public class Main {
                 System.out.println(id+" "+name+" "+pass);
 
             }
-        }
+        }*/
+        UserController controller= new UserController();
+        controller.insertData(2,"David","pass");
     }
 }
 
