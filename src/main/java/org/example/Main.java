@@ -7,7 +7,15 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        /*String user="postgres";
+        UserController controller= new UserController();
+        //controller.insertData(2,"David","pass");
+        //controller.readData();
+        //controller.updateData("DavidNew","passNEw",2);
+        //controller.deleteData(2);
+    }
+}
+
+/*String user="postgres";
         String password="12345";
         Connection conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/TaskManagement",user,password);
         try (Statement stmt = conn.createStatement();
@@ -20,13 +28,6 @@ public class Main {
 
             }
         }*/
-        UserController controller= new UserController();
-        //controller.insertData(2,"David","pass");
-        //controller.readData();
-        //controller.updateData("DavidNew","passNEw",2);
-        controller.deleteData(2);
-    }
-}
 
 
 /*

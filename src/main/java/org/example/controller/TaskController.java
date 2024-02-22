@@ -2,7 +2,7 @@ package org.example.controller;
 
 import java.sql.*;
 
-public class UserController {
+public class TaskController {
     public Connection getConnection() throws SQLException {
         String url = "jdbc:postgresql://localhost:5432/TaskManagement";
         String user="postgres";
@@ -11,14 +11,16 @@ public class UserController {
     }
 
     // Método para insertar datos en la base de datos
-    public void insertData(int userId,String userName, String userPassword) {
-        String query = "INSERT INTO public.users(id, name, password) VALUES (?, ?, ?);";
+    public void insertData(int taskId,String desciption, Date expiration_date,boolean completed) {
+        String query = "INSERT INTO public.tasks(id, title, description, expiration_date, completed) VALUES (?, ?, ?, ?, ?);";
+
 
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(query)) {
-            pstmt.setInt(1,userId);
-            pstmt.setString(2, userName);
-            pstmt.setString(3, userPassword);
+            pstmt.setInt(1,taskId);
+            pstmt.setString(2, desciption);
+            pstmt.setDate(3,expiration_date);
+            pstmt.setBoolean(4,completed);
             pstmt.executeUpdate();
 
             System.out.println("Datos insertados correctamente.");
@@ -27,7 +29,7 @@ public class UserController {
         }
     }
 
-    // Método para leer datos de la base de datos
+    
     public void readData() {
         String query = "SELECT * FROM users";
 
@@ -79,4 +81,3 @@ public class UserController {
     }
 
 }
-
