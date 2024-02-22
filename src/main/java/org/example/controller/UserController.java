@@ -42,24 +42,27 @@ public class UserController {
             e.printStackTrace();
         }
     }
-    /*
+
     // Método para actualizar datos en la base de datos
-    public void updateData(String nombreNuevo, String apellidoNuevo, int id) {
-        String query = "UPDATE tabla_ejemplo SET nombre = ?, apellido = ? WHERE id = ?";
+    public void updateData(String Username, String userPassword, int id) {
+        String query = "UPDATE public.users SET  id = ?, name = ?, password = ? WHERE id = ?";
 
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            pstmt.setString(2, Username);
+            pstmt.setString(3, userPassword);
+            pstmt.setInt(4, id);
 
-            pstmt.setString(1, nombreNuevo);
-            pstmt.setString(2, apellidoNuevo);
-            pstmt.setInt(3, id);
             pstmt.executeUpdate();
 
             System.out.println("Datos actualizados correctamente.");
         } catch (SQLException e) {
+            System.out.println("Los datos no fueron actualizados.");
             e.printStackTrace();
         }
     }
+     /*
 
     // Método para eliminar datos de la base de datos
     public void deleteData(int id) {
