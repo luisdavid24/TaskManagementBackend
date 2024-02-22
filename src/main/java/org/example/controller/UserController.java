@@ -62,11 +62,9 @@ public class UserController {
             e.printStackTrace();
         }
     }
-     /*
 
-    // Método para eliminar datos de la base de datos
     public void deleteData(int id) {
-        String query = "DELETE FROM tabla_ejemplo WHERE id = ?";
+        String query = "DELETE FROM users WHERE id = ?";
 
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(query)) {
@@ -79,6 +77,7 @@ public class UserController {
             e.printStackTrace();
         }
     }
+     /*
 
     // Método principal para probar las operaciones CRUD
     public static void main(String[] args) {
