@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.controller.TaskController;
 import org.example.controller.UserController;
 
 import javax.xml.transform.Result;
@@ -8,6 +9,10 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) throws SQLException {
         UserController controller= new UserController();
+        TaskController controller1=new TaskController();
+        Date fecha = new Date(2000,12,31);
+        //controller1.insertData(4,"Titulo","Description 1", fecha,false);
+        //controller1.readData();
         //controller.insertData(2,"David","pass");
         //controller.readData();
         //controller.updateData("DavidNew","passNEw",2);

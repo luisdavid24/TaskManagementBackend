@@ -11,16 +11,18 @@ public class TaskController {
     }
 
     // Método para insertar datos en la base de datos
-    public void insertData(int taskId,String desciption, Date expiration_date,boolean completed) {
+    public void insertData(int taskId,String title,String description, Date expiration_date,boolean completed) {
         String query = "INSERT INTO public.tasks(id, title, description, expiration_date, completed) VALUES (?, ?, ?, ?, ?);";
 
 
         try (Connection con = getConnection();
              PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setInt(1,taskId);
-            pstmt.setString(2, desciption);
-            pstmt.setDate(3,expiration_date);
-            pstmt.setBoolean(4,completed);
+            pstmt.setString(2, title);
+            pstmt.setString(3, description);
+
+            pstmt.setDate(4,expiration_date);
+            pstmt.setBoolean(5,completed);
             pstmt.executeUpdate();
 
             System.out.println("Datos insertados correctamente.");
@@ -29,17 +31,18 @@ public class TaskController {
         }
     }
 
-    
+
     public void readData() {
-        String query = "SELECT * FROM users";
+        String query = "SELECT * FROM tasks";
 
         try (Connection con = getConnection();
              Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
-                System.out.println("Id: " + rs.getInt("id") + ", User name: " + rs.getString("name")+" Password: "+rs.getString("password"));
+                System.out.println("Id: " + rs.getInt("id") + ", Task titulo: " + rs.getString("title")+" Description: "+rs.getString("description")+ "Date: "+rs.getDate("expiration_date")+" Completed: "+rs.getBoolean("completed"));
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,5 +82,6 @@ public class TaskController {
             e.printStackTrace();
         }
     }
+
 
 }
